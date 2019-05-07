@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+   - name : "creat a directory"
+     file : name=/root/mahi state=directory
+   - name : "copy"
+     copy : src=/root/http.yml dest=/root/mahi
