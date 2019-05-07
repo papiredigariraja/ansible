@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+    - name: "create directory"
+      file:  path=/root/tomcat state=directory
+    - name   : "download tgzfile"
+      get_url: url=https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.0.M10/bin/apache-tomcat-9.0.0.M10.tar.gz dest=/root/tomcat
+    - name      : "extract"
+      unarchive : src=/root/tomcat/apache-tomcat-9.0.0.M10.tar.gz dest=/root/tomcat
+    - name    : "start service"
+      shell   : sh /root/tomcat/apache-tomcat-9.0.0.M10/bin/startup.sh
+    - name    : "install jenkins"
+      get_url : url=http://updates.jenkins-ci.org/download/war/2.7.3/jenkins.war  dest=/root/tomcat/apache-tomcat-9.0.0.M10/webapps
+     
+
+    
+
